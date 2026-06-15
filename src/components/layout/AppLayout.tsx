@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { CartDrawer } from '../cart/CartDrawer';
+import { ChatWidget } from '../chat/ChatWidget';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
 export function AppLayout() {
   const [cartOpen, setCartOpen] = useState(false);
-  const { role } = useAuthContext();
+  const { isAuthenticated, role } = useAuthContext();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -19,6 +20,7 @@ export function AppLayout() {
       </main>
       <Footer />
       {role === 'USER' && <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />}
+      {isAuthenticated && <ChatWidget />}
     </div>
   );
 }

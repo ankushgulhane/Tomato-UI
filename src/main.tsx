@@ -5,6 +5,7 @@ import { App } from './App';
 import { ToastContainer } from './components/common/Toast';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ChatProvider } from './context/ChatContext';
 import { ToastProvider } from './context/ToastContext';
 import './index.css';
 
@@ -23,8 +24,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ToastProvider>
         <AuthProvider>
           <CartProvider>
-            <App />
-            <ToastContainer />
+            <ChatProvider>
+              <App />
+              <ToastContainer />
+            </ChatProvider>
           </CartProvider>
         </AuthProvider>
       </ToastProvider>

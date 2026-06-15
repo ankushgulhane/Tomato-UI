@@ -24,11 +24,11 @@ export function ActiveDelivery() {
   }
 
   const handlePickup = () => {
-    pickupMutation.mutate(undefined, { onError: (error) => showToast((error as ApiError).message, 'error') });
+    pickupMutation.mutate(undefined, { onError: (error) => showToast((error as unknown as ApiError).message, 'error') });
   };
 
   const handleDeliver = () => {
-    deliverMutation.mutate(undefined, { onError: (error) => showToast((error as ApiError).message, 'error') });
+    deliverMutation.mutate(undefined, { onError: (error) => showToast((error as unknown as ApiError).message, 'error') });
   };
 
   return (

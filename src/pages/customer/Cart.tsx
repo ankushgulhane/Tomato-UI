@@ -59,7 +59,7 @@ export function Cart() {
           clearCart();
           navigate(`/checkout/${data.orderId}`);
         },
-        onError: (error) => showToast((error as ApiError).message, 'error'),
+        onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
       }
     );
   };

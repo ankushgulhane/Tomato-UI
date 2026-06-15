@@ -64,7 +64,7 @@ export function RestaurantProfile() {
   const onSubmit = (values: ProfileFormValues) => {
     updateMutation.mutate(values, {
       onSuccess: () => showToast('Restaurant updated', 'success'),
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 

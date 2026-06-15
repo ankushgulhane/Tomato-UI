@@ -46,7 +46,7 @@ export function CreateUser() {
         showToast(`Created ${user.role.toLowerCase()} account for ${user.email}`, 'success');
         reset({ name: '', email: '', password: '', phone: '', address: '', role: values.role });
       },
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 

@@ -50,7 +50,7 @@ export function MenuManagement() {
           setAddOpen(false);
           showToast('Menu item added', 'success');
         },
-        onError: (error) => showToast((error as ApiError).message, 'error'),
+        onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
       }
     );
   };
@@ -64,7 +64,7 @@ export function MenuManagement() {
           setEditingItem(null);
           showToast('Menu item updated', 'success');
         },
-        onError: (error) => showToast((error as ApiError).message, 'error'),
+        onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
       }
     );
   };
@@ -72,7 +72,7 @@ export function MenuManagement() {
   const handleDeactivate = (item: MenuItemResponse) => {
     deactivateMutation.mutate(item.id, {
       onSuccess: () => showToast(`${item.name} deactivated`, 'success'),
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 

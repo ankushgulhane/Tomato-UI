@@ -41,7 +41,7 @@ export function OrderDetail() {
 
   const handleCancel = () => {
     cancelMutation.mutate(undefined, {
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 
@@ -54,7 +54,7 @@ export function OrderDetail() {
           setRatingOpen(false);
           showToast('Thanks for your rating!', 'success');
         },
-        onError: (error) => showToast((error as ApiError).message, 'error'),
+        onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
       }
     );
   };

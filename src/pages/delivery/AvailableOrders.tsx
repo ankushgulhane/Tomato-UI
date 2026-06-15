@@ -24,13 +24,13 @@ export function AvailableOrders() {
   const handleAccept = (orderId: number) => {
     acceptMutation.mutate(orderId, {
       onSuccess: () => navigate(`/delivery/active/${orderId}`),
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 
   const handleDecline = (orderId: number) => {
     declineMutation.mutate(orderId, {
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 

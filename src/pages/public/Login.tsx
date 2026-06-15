@@ -37,7 +37,7 @@ export function Login() {
 
   const onSubmit = (values: LoginFormValues) => {
     loginMutation.mutate(values, {
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 

@@ -41,7 +41,7 @@ export function Register() {
   const onSubmit = (values: RegisterFormValues) => {
     registerMutation.mutate(
       { ...values, role: 'USER' },
-      { onError: (error) => showToast((error as ApiError).message, 'error') }
+      { onError: (error) => showToast((error as unknown as ApiError).message, 'error') }
     );
   };
 

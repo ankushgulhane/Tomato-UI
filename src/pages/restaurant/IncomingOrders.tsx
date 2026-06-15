@@ -50,17 +50,17 @@ export function IncomingOrders() {
   }
 
   const handleAccept = (orderId: number) => {
-    acceptMutation.mutate(orderId, { onError: (error) => showToast((error as ApiError).message, 'error') });
+    acceptMutation.mutate(orderId, { onError: (error) => showToast((error as unknown as ApiError).message, 'error') });
   };
 
   const handleReject = (orderId: number) => {
-    rejectMutation.mutate(orderId, { onError: (error) => showToast((error as ApiError).message, 'error') });
+    rejectMutation.mutate(orderId, { onError: (error) => showToast((error as unknown as ApiError).message, 'error') });
   };
 
   const handleStatusUpdate = (orderId: number, status: OrderStatus) => {
     statusMutation.mutate(
       { orderId, body: { status } },
-      { onError: (error) => showToast((error as ApiError).message, 'error') }
+      { onError: (error) => showToast((error as unknown as ApiError).message, 'error') }
     );
   };
 

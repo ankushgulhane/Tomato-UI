@@ -49,7 +49,7 @@ export function Onboard() {
   const onSubmit = (values: OnboardFormValues) => {
     createMutation.mutate(values, {
       onSuccess: () => navigate('/restaurant/profile', { replace: true }),
-      onError: (error) => showToast((error as ApiError).message, 'error'),
+      onError: (error) => showToast((error as unknown as ApiError).message, 'error'),
     });
   };
 
